@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:messages />
+		<p:panelGrid columns="2">
+			<f:facet name="header">Cadastro de Pessoa</f:facet>
+			<p:outputLabel value="email" for="email" />
+			<p:inputText id="email" required="true"
+				value="#{UsuarioBean.email}" />
+
+			<p:outputLabel value="endereço" for="endereco" />
+			<p:inputText id="endereco" required="true"
+				value="#{UsuarioBean.endereco}"/>
+			
+			<p:outputLabel value="
+				contacto" for="contacto" />
+			<p:inputText id="contacto" required="true"
+				value="#{UsuarioBean.contacto}"/>
+			
+			<p:outputLabel value="
+				Data de cadastro" />
+			<p:calendar />
+			<f:facet name="footer">
+				<p:commandButton value="Cadastrar" ajax="false" icon="ui-icon-plus"
+					iconPos="right" action="#{UsuarioBean.mostrar}" />
+			</f:facet>
+		</p:panelGrid>
+
+	</h:form>
+</h:body>
+</html>

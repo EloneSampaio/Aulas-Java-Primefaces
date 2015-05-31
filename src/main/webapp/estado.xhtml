@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" value="#{E.nome}" required="true" />
+			<p:outputLabel value="Estados" for="estado" />
+			<p:selectOneMenu id="estado" required="true" value="#{E.estado}">
+				<p:ajax process="@this" update="cidade" event="change"
+					listener="#{E.carregaCidade}" 
+					
+					/>
+
+				<f:selectItem value="#{null}" itemLabel="Selecciona" />
+				<f:selectItems value="#{E.estados}" var="estado"
+					itemLabel="#{estado}" itemValue="#{estado}" />
+
+
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Cidades" for="cidade" />
+			<p:selectOneMenu value="#{E.cidade}" required="true" id="cidade">
+				<f:selectItem itemValue="#{null}" itemLabel="Selecciona"/>
+				<f:selectItems value="#{E.cidades}" var="cidade"
+					itemLabel="#{cidade}" itemValue="#{cidade}" />
+			</p:selectOneMenu>
+		</p:panelGrid>
+		<p:commandButton value="Enviar" action="#{E.mostrar}"
+			 />
+	</h:form>
+</h:body>
+</html>

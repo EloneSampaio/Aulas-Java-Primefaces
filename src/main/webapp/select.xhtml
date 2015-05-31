@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Interesse" for="interesse" />
+			<p:selectOneMenu id="interesse" value="#{Perfil.interesse}"
+				required="true" converter="C" var="i" filter="true" filterMatchMode="startsWith">
+				<f:selectItem itemLabel="Seleciona" itemValue="#{null}" />
+				<f:selectItems var="interesse" value="#{Perfil.interesses}"
+					itemLabel="#{interesse.descricao}" itemValue="#{interesse}" />
+				<p:column>
+					<p:graphicImage name="#{i.icon}.jpg" library="imagens" />
+				</p:column>
+				<p:column>
+					<h:outputText value="#{i.descricao}" />
+				</p:column>
+			</p:selectOneMenu>
+		</p:panelGrid>
+		<p:commandButton value="Enviar" action="#{Perfil.actualizar}"
+			update="@form" />
+	</h:form>
+</h:body>
+</html>

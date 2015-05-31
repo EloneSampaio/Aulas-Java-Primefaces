@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+.bordas td {
+	border: none;
+	padding: 3px;
+}
+
+.cel-radio {
+	text-align: center;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText value="#{I.nome}" id="nome" required="true"/>
+			
+			<p:outputLabel value="Interesses" for="interesse" />
+			<p:selectManyCheckbox value="#{I.interesses}" id="interesse" required="true" layout="pageDirection"
+				styleClass="bordas">
+				<f:selectItem itemLabel="Cinema" itemValue="1" />
+				<f:selectItem itemLabel="Computador" itemValue="2" />
+				<f:selectItem itemLabel="Leitura" itemValue="3" />
+			</p:selectManyCheckbox>
+		</p:panelGrid>
+		<p:commandButton value="Enviar" action="#{I.mostrar}" />
+	</h:form>
+</h:body>
+</html>

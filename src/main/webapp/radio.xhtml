@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+.bordas td {
+	border: none;
+	padding: 3px;
+}
+
+.cel-radio{
+text-align: center;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Sexo" for="sexo" />
+			<p:selectOneRadio value="#{UsuarioBean.sexo}" required="true"
+				styleClass="bordas" id="sexo">
+				<f:selectItem itemLabel="Masculino" itemValue="M" />
+				<f:selectItem itemLabel="Femenino" itemValue="F" />
+			</p:selectOneRadio>
+		</p:panelGrid>
+		<h:panelGroup>
+			<p:outputLabel value="Estado Civil" for="estadoCivil" />
+			<p:selectOneRadio required="true" id="estadoCivil"
+				value="#{UsuarioBean.estadoCivil}" layout="custom">
+				<f:selectItem itemLabel="Casado" />
+				<f:selectItem itemValue="Solteiro"  />
+				<f:selectItem itemValue="Divorciado" />
+			</p:selectOneRadio>
+
+			<p:panelGrid columns="3" styleClass="bordas" rowClasses="cel-radio">
+
+				<p:radioButton id="opt1" tabindex="0" for="estadoCivil"/>
+				<p:radioButton id="opt2" tabindex="1" for="estadoCivil"/>
+				<p:radioButton id="opt3" tabindex="2" for="estadoCivil"/>
+
+				<p:outputLabel value="Casado" for="opt1" />
+				<p:outputLabel value="Solteiro" for="opt2" />
+				<p:outputLabel value="Divorciado" for="opt3" />
+			</p:panelGrid>
+		</h:panelGroup>
+
+		<p:commandButton value="Enviar" action="#{UsuarioBean.mostrarCivil}" />
+	</h:form>
+</h:body>
+</html>

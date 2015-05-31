@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+			<f:facet name="header">Formulario de Cadastro</f:facet>
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" required="true" value="#{T.nome}">
+				<p:ajax listener="#{T.consulta}" event="change" process="@this"
+					partialSubmit="true" />
+			</p:inputText>
+			<p:outputLabel value="Sobrenome" for="sobrenome" />
+			<p:inputText id="sobrenome" required="true" value="#{T.snome}" />
+			<p:outputLabel value="Email" for="email" />
+			<p:inputText id="email" required="" value="#{T.email}" />
+			<p:outputLabel value="Data de Cadastro" for="data" />
+			<p:calendar id="data" pattern="dd/MM/yyyy" navigator="true"
+				readonlyInput="true" pages="1" effect="fold" value="#{T.data}" />
+
+			<p:outputLabel value="Senha" for="senha" />
+			<p:password id="senha" feedback="true" weakLabel="Fraco"
+				goodLabel="Bom" strongLabel="Forte" match="senha1"
+				value="#{T.senha}" />
+			<p:outputLabel value="Confirmar Senha" for="senha1" />
+			<p:password id="senha1" />
+
+		</p:panelGrid>
+		<br />
+		<p:outputLabel value="SObre Mim" for="texto" />
+<br />
+		<p:inputTextarea rows="4" cols="40" autoResize="true" maxlength="300"
+			id="texto" counter="carater" counterTemplate="Restam {0} caracteres" />
+			<br />
+		<h:outputText id="carater" />
+		<p:commandButton ajax="true" update="@form" value="Enviar"
+			action="#{T.mostrar}" />
+
+	</h:form>
+
+</h:body>
+</html>
